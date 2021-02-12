@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login form</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/form.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+  <div class="container"><div class="header">
+    <h2>Sign up form</h2>
+
+    <form name="myform" id="form" method="post">
+
+    <div class="form-group"> 
+      <label for="full name">Full name</label>
+        <input type="text" class="form-control" id="fn" name="fullname" placeholder="enter your full name" autocomplete="off">
+        <p id="validate_name" class="text-danger font-weight-bold"></p>
+    </div>
+
+    <div class="form-group">
+        <label for="email">email</label>
+        <input type="text" class="form-control" id="email" placeholder="enter your email id" autocomplete="off">
+         <p id="validate_email" class="text-danger font-weight-bold"></p>
+      </div>
+
+      <div class="form-group">
+        <label for="password">password</label>
+        <input type="text" class="form-control" id="password" placeholder="enter your password" autocomplete="off">
+         <p id="validate_pwd" class="text-danger font-weight-bold"></p>
+      </div>
+
+    <div class="form-group">
+      <label for=" confirm password"> confirm password</label>
+        <input type="text" class="form-control" id="password2" placeholder="confirm your password" autocomplete="off">
+        <p id="validate_cpwd" class="text-danger font-weight-bold"></p>
+    </div>
+
+    <button type="submit" class="btn btn-light" autocomplete="off">SUBMIT</button>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+    <table class="table" id="showinput">
+    <thead>
+      <tr>
+        <th scope="col">s.no</th>
+        <th scope="col">First</th>
+        <th scope="col">email</th>
+      </tr>
+    </thead>
+    </table>
+   
+   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="js/form1.js"></script>
+</form>
+</body>
+</html>
