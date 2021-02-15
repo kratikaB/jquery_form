@@ -15,10 +15,10 @@ jQuery(document).ready(function(){
 	jQuery('#validate_pwd').hide();
 	jQuery('#validate_cpd').hide();
 
-/*	let user_err = true;
+	let user_err = true;
 	let mail = true;
 	let pwd1 = true;
-	let pwd2 = true;*/
+	let pwd2 = true;
 
 	jQuery('#fn').keyup(function(){
 		fn_check();
