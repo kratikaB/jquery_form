@@ -1,13 +1,3 @@
-(function () {
-	jQuery("#form").onsubmit = function (e) {
-		e.preventDefault(); //Clicking on a "Submit" button, prevent it from submitting a form
-
-		if(!validation())
-			return false;
-
-		enter_data();
-	};
-
 jQuery(document).ready(function(){
 
 	jQuery('#validate_name').hide();
@@ -113,33 +103,16 @@ jQuery(document).ready(function(){
 
 	}
 
-	function enter_data() {
-	let table = jQuery("#showinput").val();
-	let row = table.insertRow(table.rows.length);//find the no of rows
-	let cell = row.insertCell(0);
-	let cell1 = row.insertCell(1);
-	let cell2 = row.insertCell(2);
-
-	cell.innerHTML = (table.rows.length-1).show();
-	cell1.innerHTML = jQuery("#fn").val().show();
-	cell2.innerHTML = jQuery("#email").val().show();
-
-}
- jQuery('#submitbutton').click(function () { 
-        validate_name(); 
-        validate_email(); 
-        validate_pwd(); 
-        validate_cpwd(); 
-        if ((user_err == true) &&  
-            (mail == true) &&  
-            (pwd1 == true) &&  
-            (pwd2 == true)) { 
-            return true; 
-        } else { 
-            return false; 
-        } 
+ jQuery("#form").submit(function( event ) {
+event.preventDefault();
+let data= jQuery(this).serializeArray();
+let values = {};
+data.map(o => {
+return values[o.name]= o.value;
+})
+jQuery("#userData").append(`<tr><td>${values.fullname}</td><td>${values.email}></tr>`)
+  
 
 
-});
-
+	});
 });
