@@ -103,16 +103,17 @@ jQuery(document).ready(function(){
 
 	}
 
- jQuery("#form").submit(function( event ) {
-event.preventDefault();
-let data= jQuery(this).serializeArray();
-let values = {};
-data.map(o => {
-return values[o.name]= o.value;
-})
-jQuery("#userData").append(`<tr><td>${values.fullname}</td><td>${values.email}></tr>`)
-  
+	 jQuery("#form").submit(function( event ) {
+	event.preventDefault();
+	let data= jQuery(this).serializeArray();
+	let values = {};
+	data.map(o => {
+	return values[o.name]= o.value;
+	})
+	jQuery("#userData").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
+	jQuery("#form")[0].reset()  
 
 
 	});
 });
+
