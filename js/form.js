@@ -119,8 +119,15 @@ jQuery(document).ready(function(){
 	fullstorage.push(storage);
 	LocalsetItem();
 
+	let comment = LocalgetItem();
+                jQuery('#userData')
+                    .attr('fullname', 'values.name')
+                    .attr('email', 'values.email')
+                   
+                    .appendTo("#showinput");
 
-	jQuery("#userData").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
+	jQuery("#showinput").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
+	
 
 	jQuery("#form")[0].reset()
 
