@@ -104,32 +104,36 @@ jQuery(document).ready(function() {
 
   })
 
-  jQuery("#form").submit(function(event) {
-    event.preventDefault();
-    let data = jQuery(this).serializeArray();
-    let values = {};
-    data.map(o => {
-      return values[o.name] = o.value;
+    jQuery("#form").submit(function(event) {
+
+      event.preventDefault();
+
+        jQuery("#form").each(function(){
+        if (jQuery.trim(this.values) == "") {
+          alert("you did not fill the form");
+
+          }
+          else{
+            
+        let data = jQuery(this).serializeArray();
+        let values = {};
+        data.map(o => {
+          return values[o.name] = o.value;
+        });
+        let storage = {
+          fullname: values.fullname,
+          email: values.email
+        };
+        fullstorage.push(storage);
+
+        LocalsetItem();
+
+        jQuery("#showinput").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
+        jQuery("#form")[0].reset()
+    }
+      })
     });
-    let storage = {
-      fullname: values.fullname,
-      email: values.email
-    };
-    fullstorage.push(storage);
-
-    LocalsetItem();
-
-
-
-
-    jQuery("#showinput").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
-
-
-    jQuery("#form")[0].reset()
-
-
-  });
-
+  
   function LocalsetItem() {
     localStorage.setItem('localstorage', JSON.stringify(fullstorage));
   }
