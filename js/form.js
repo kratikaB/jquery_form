@@ -26,7 +26,9 @@ jQuery(document).ready(function() {
       user_err = false;
       return false;
     } else {
+
       jQuery('#validate_name').hide();
+      return true;
 
     }
   }
@@ -46,7 +48,9 @@ jQuery(document).ready(function() {
       mail = false;
       return false;
     } else {
+
       jQuery('#validate_email').hide();
+      return true;
 
     }
   }
@@ -67,7 +71,9 @@ jQuery(document).ready(function() {
       pwd1 = false;
       return false;
     } else {
+
       jQuery('#validate_pwd').hide();
+      return true;
 
     }
 
@@ -91,48 +97,58 @@ jQuery(document).ready(function() {
       return false;
     } else {
       jQuery('#validate_cpwd').hide();
+      return true;
 
     }
 
   }
 
-  let fullstorage = LocalgetItem();
-  fullstorage.map((obj, i) => {
-
-    jQuery("#showinput").append(`<tr><td>${obj.fullname}</td><td>${obj.email}</tr>`)
-
-
-  })
 
     jQuery("#form").submit(function(event) {
 
       event.preventDefault();
 
-        jQuery("#form").each(function(){
-        if (jQuery.trim(this.values) == "") {
-          alert("you did not fill the form");
+        
+        let password2 = pass2_check();
+        let password = pass_check();
 
-          }
-          else{
-            
-        let data = jQuery(this).serializeArray();
-        let values = {};
-        data.map(o => {
-          return values[o.name] = o.value;
-        });
-        let storage = {
-          fullname: values.fullname,
-          email: values.email
-        };
-        fullstorage.push(storage);
+        let email = email_check();
+        let fn = fn_check();
 
-        LocalsetItem();
 
-        jQuery("#showinput").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
-        jQuery("#form")[0].reset()
-    }
-      })
+        // updated
+        if(password2 && fn && password  && email != false) {
+          let data = jQuery(this).serializeArray();
+          let values = {};
+          data.map(o => {
+            return values[o.name] = o.value;
+          });
+          let storage = {
+            fullname: values.fullname,
+            email: values.email
+          };
+          fullstorage.push(storage);
+
+
+          jQuery("#showinput").append(`<tr><td>${values.fullname}</td><td>${values.email}</tr>`)
+          LocalsetItem();
+          jQuery("#form")[0].reset();
+        }
+        else{
+          
+          alert('here some error');
+
+        }
+
     });
+    let storage = LocalgetItem();
+  storage.map((obj, i) => {
+    
+
+    jQuery("#showinput").append(`<tr><td>${obj.fullname}</td><td>${obj.email}</tr>`)
+
+
+  })
   
   function LocalsetItem() {
     localStorage.setItem('localstorage', JSON.stringify(fullstorage));
